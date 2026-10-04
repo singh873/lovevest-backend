@@ -17,9 +17,9 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-    "http://localhost:5173",
-    "https://lovevest-frontend.vercel.app"
-]
+        "http://localhost:5173",
+        "https://lovevest-frontend.vercel.app"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
@@ -60,7 +60,7 @@ def create_admin():
             total_partners=0,
             loyalty_score=100,
             role="admin",
-            is_blocked = False,
+            is_blocked=False,
             created_date=date.today()
         )
 
@@ -78,7 +78,6 @@ def create_admin():
 create_admin()
 
 
-
 # Routes
 from routes.Admin.admin import app as admin_router
 from routes.auth import app as auth_router
@@ -90,10 +89,6 @@ from routes.Admin.relationships import app as admin_relationships_router
 from routes.Admin import insurance
 from routes.insurance import app as insurance_router, seed_insurance_plans
 from routes.password_reset import app as password_reset_router
-
-
-
-
 
 
 app.include_router(password_reset_router)

@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
+from auth.password import hash_password
 from database import engine, Base, SessionLocal
 import models
 from models import User
@@ -55,7 +56,7 @@ def create_admin():
             gender="other",
             state="system",
             email="admin@lovevest.com",
-            password_hash="Admin@1234",
+            password_hash=hash_password("Admin@1234"),
             relationship_status="single",
             total_partners=0,
             loyalty_score=100,
@@ -73,7 +74,6 @@ def create_admin():
 
     finally:
         db.close()
-
 
 create_admin()
 

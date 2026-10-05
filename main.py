@@ -38,6 +38,13 @@ Base.metadata.create_all(bind=engine)
 # Static files
 app.mount("/uploads", StaticFiles(directory="uploads"), name="uploads")
 
+@app.get("/health")
+def health():
+    return {
+        "status": "ok",
+        "message": "LoveVest backend is running"
+    }
+
 
 # Create admin
 def create_admin():
